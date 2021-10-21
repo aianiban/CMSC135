@@ -1,7 +1,7 @@
 # Project Name
 By Team name
 - [Adrianne Paul Aniban](https://github.com/aianiban)
-- [Benjamin Julien Roque(https://github.com/rowyourboot)
+- [Benjamin Julien Roque](https://github.com/rowyourboot)
 
 ## Overview 
 
