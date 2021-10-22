@@ -7,6 +7,7 @@ Accompany is a social media platform for BS Computer Science students and alumni
 
 ## Tables
 - User
+- Usercompanions
 - Messages
 
 ## User Stories 
