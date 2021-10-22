@@ -1,4 +1,4 @@
-# Project Name
+# Accompany
 By Team name
 - [Adrianne Paul Aniban](https://github.com/aianiban)
 - [Benjamin Julien Roque](https://github.com/rowyourboot)
@@ -19,8 +19,8 @@ By Team name
 - As a user, I should be able to send messages to people who I’ve added in my contact list.
 - As a user, I should be able to delete messages from my conversations.
 - As a user, I should be able to send emojis.
-- As a user, I should be able to add a ____.
-- As a user, I should be able to accept or reject a ____ request.
+- As a user, I should be able to add a companion.
+- As a user, I should be able to accept or reject a companion request.
 - As a user, I should be able to remove people from my contact list. 
 
 
