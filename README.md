@@ -14,7 +14,7 @@ Accompany is a social media platform for BS Computer Science students and alumni
 - As a user, I should be able to create a new account and login using that account.
 - As a user, I should be able to view and modify my account information.
 - As a user, I should be able to customize my profile name, description, tags and icon. 
-- As a user, I should be able to add users in my companion list.
+- As a user, I should be able to add companions in my companion list.
 - As a user, I should be able to chat with people in my companion list.
 - As a user, I should be able to accept or reject a companion request.
 - As a user, I should be able to remove people from my companion list. 
