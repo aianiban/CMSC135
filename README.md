@@ -19,6 +19,7 @@ Accompany is a social media platform for BS Computer Science students and alumni
 - As a user, I should be able to accept or reject a companion request.
 - As a user, I should be able to remove people from my companion list. 
 
+
 ## Tech Stack
 - HTML, CSS, Javascript, JQuery
 - React for login UI
@@ -31,12 +32,16 @@ Accompany is a social media platform for BS Computer Science students and alumni
 - Users can modify their profiles and add user icons.
 - Users can add people to their companion list.
 - Users can message other companions.
-- Users can search their companion list.
+- Users can search for their companions in the companion list.
 - Users can delete messages.
-- Users can send emojis.
+
 
 ## Stretch Goals
 - Send Photos
 - Send Small Files
+- Forums
 - Rating system
+- Stickers, emojis and meme templates
+- Group chatting
+
 
