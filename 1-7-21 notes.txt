@@ -1,0 +1,16 @@
+overall:
+- database name: accompany
+- minove ko sa dashboard folder ung index tas nirename ko as home.php
+- minove ko sa profile folder ung profile.php
+- ung separate js and php files para sa signup(index) and login nilagay ko sa index folder
+- di ko na nilagyan ng header file, naka lagay na sa mismong index.php at login.php ung <head></head>
+
+chatapp:
+- nilagyan ko ng back to home button, class name: home
+
+home:
+- ox na home, profile saka chat btn
+
+profile:
+- nakalink na sa db ung full name, img saka email
+- dadagdag ko pa ba ung phone, mobile saka address sa db?
