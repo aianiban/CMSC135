@@ -1,3 +1,4 @@
+
 overall:
 - database name: accompany
 - minove ko sa dashboard folder ung index tas nirename ko as home.php
@@ -13,4 +14,4 @@ home:
 
 profile:
 - nakalink na sa db ung full name, img saka email
-- dadagdag ko pa ba ung phone, mobile saka address sa db?
+- idadagdag ko pa ba ung phone, mobile saka address sa db?
