@@ -8,6 +8,15 @@ form.onsubmit = (e)=>{
 
 }
 
+inputField.focus();
+inputField.onkeyup = ()=>{
+    if(inputField.value != ""){
+        sendBtn.classList.add("active");
+    }else{
+        sendBtn.classList.remove("active");
+    }
+}
+
 sendBtn.onclick = ()=>{
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "php/insert-chat.php", true);

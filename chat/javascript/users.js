@@ -3,7 +3,7 @@ searchBtn = document.querySelector(".users .search button"),
 usersList = document.querySelector(".users .users-list");
 
 searchBtn.onclick = ()=>{
-  searchBar.classList.toggle("active");
+  searchBar.classList.toggle("show");
   searchBar.focus();
   searchBtn.classList.toggle("active");
 }
