@@ -23,6 +23,11 @@
         </a>';
       
     }
+              $request_count = 0;
+              $sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
+              if(mysqli_num_rows($sql3) > 0) {
+                $request_count = mysqli_num_rows($sql3);
+              }
 ?>
 
 
@@ -119,14 +124,14 @@
       <div class="content">
       <div class="logo"><a href="#">Accompany</a></div>
         <ul class="links">
-          <li><a href="home.php">Home</a></li>
+          <li><a href="../dashboard/home.php">Home</a></li>
           <li>
             <a href="../profile/profile.php" class="desktop-link">Profile</a>
             <input type="checkbox" id="show-features">
             <label for="show-features">Profile</label>
             <ul class="dropdown">
               <li><a href="#">Companion List</a></li>
-              <li><a href="#">Requests</a></li>
+              <li><a href="#" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a></li>
               <li><a href="../chat/php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a></li>
             </ul>
           </li>
@@ -152,14 +157,6 @@
             </ul>
           </li>
           <li>
-            <?php 
-              $request_count = 0;
-              $sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
-              if(mysqli_num_rows($sql3) > 0) {
-                $request_count = mysqli_num_rows($sql3);
-              }
-            ?>
-            <a href="#" class="desktop-link" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a>
             <input type="checkbox" id="show-features">
             <label for="show-services" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</label>
           </li>

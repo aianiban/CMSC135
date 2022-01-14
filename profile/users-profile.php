@@ -17,6 +17,11 @@
 	echo "<script>console.log('user=" . $_SESSION['unique_id'] . ", profile_user_id=" . $profile_user_id . "')</script>";
 	$_SESSION['relationship'] = "";
 
+	$request_count = 0;
+	$sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
+	if(mysqli_num_rows($sql3) > 0) {
+	  $request_count = mysqli_num_rows($sql3);
+	}
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +46,7 @@
 </head>
 <body>
   <div class="wrapper">
-    <nav>
+  <nav>
       <input type="checkbox" id="show-search">
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
@@ -50,14 +55,13 @@
         <ul class="links">
           <li><a href="../dashboard/home.php">Home</a></li>
           <li>
-            <a href="profile.php" class="desktop-link">Profile</a>
+            <a href="../profile/profile.php" class="desktop-link">Profile</a>
             <input type="checkbox" id="show-features">
             <label for="show-features">Profile</label>
             <ul class="dropdown">
-              <li><a href="#">Drop Menu 1</a></li>
-              <li><a href="#">Drop Menu 2</a></li>
-              <li><a href="#">Drop Menu 3</a></li>
-              <li><a href="#">Drop Menu 4</a></li>
+              <li><a href="#">Companion List</a></li>
+              <li><a href="#" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a></li>
+              <li><a href="../chat/php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a></li>
             </ul>
           </li>
           <li><a href="../chat/users.php">Chat</a></li>
@@ -78,14 +82,18 @@
                   <li><a href="#">Sub Menu 2</a></li>
                   <li><a href="#">Sub Menu 3</a></li>
                 </ul>
-              </li>
+              </li>              
             </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="show-features">
+            <label for="show-services" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</label>
           </li>
         </ul>
       </div>
       <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
       <form action="#" class="search-box">
-        <input type="text" placeholder="Type Something to Search..." required>
+        <input type="text" placeholder="Type Something to Search..." id="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
       </form>
     </nav>

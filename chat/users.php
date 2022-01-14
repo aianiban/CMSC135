@@ -33,15 +33,9 @@
 					<img src="../img/<?php echo $row['img'];?>" alt="">
 					<div class="details">
 						<span><?php echo $row['fname'] . " " . $row['lname'];?></span>
-						<p><?php echo $row['status'];?></p>
-						<a href="php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a>	
+						<p><?php echo $row['status'];?></p>	
 					</div>
 				</div>
-				<!-- <div>
-					<a href="../profile/profile.php" class="profile">Back to Profile</a>
-					<div style = "padding:2px;"></div>
-					<a href="php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="profile">Logout</a>
-				</div> -->
 				<a href="../dashboard/home.php" class="home">Home</a>
 			</header>
 			<div class="search">
