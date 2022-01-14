@@ -52,13 +52,14 @@
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
       <div class="content">
       <div class="logo"><a href="#">Accompany</a></div>
-        <ul class="links">
+	  <ul class="links">
           <li><a href="../dashboard/home.php">Home</a></li>
           <li>
             <a href="../profile/profile.php" class="desktop-link">Profile</a>
             <input type="checkbox" id="show-features">
             <label for="show-features">Profile</label>
             <ul class="dropdown">
+              <li><a href="../profile/profile.php">Go to profile</a></li>
               <li><a href="#">Companion List</a></li>
               <li><a href="#" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a></li>
               <li><a href="../chat/php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a></li>
@@ -84,10 +85,6 @@
                 </ul>
               </li>              
             </ul>
-          </li>
-          <li>
-            <input type="checkbox" id="show-features">
-            <label for="show-services" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</label>
           </li>
         </ul>
       </div>
