@@ -3,6 +3,9 @@
     if(!isset($_SESSION['unique_id'])){
         header("location: ../login.php");
     }
+?>
+
+<?php
     include_once "../config.php";
     $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
     if(mysqli_num_rows($sql) > 0){
@@ -33,6 +36,7 @@
   <link rel="stylesheet" href="../stylea.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="../javascript/users.js"></script>
   <!-- Modal -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -121,10 +125,9 @@
             <input type="checkbox" id="show-features">
             <label for="show-features">Profile</label>
             <ul class="dropdown">
-              <li><a href="#">Drop Menu 1</a></li>
-              <li><a href="#">Drop Menu 2</a></li>
-              <li><a href="#">Drop Menu 3</a></li>
-              <li><a href="#">Drop Menu 4</a></li>
+              <li><a href="#">Companion List</a></li>
+              <li><a href="#">Requests</a></li>
+              <li><a href="../chat/php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a></li>
             </ul>
           </li>
           <li><a href="../chat/users.php">Chat</a></li>
@@ -167,11 +170,6 @@
         <input type="text" placeholder="Type Something to Search..." id="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
       </form>
-      <!-- <div class="search-list" style="display:none">
-        <div class="home-search-item">
-          <p>hello</p>
-        </div>
-      </div> -->
     </nav>
   
   </div>
