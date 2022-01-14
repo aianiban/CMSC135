@@ -6,13 +6,16 @@
     
     include_once "../config.php";
 	
-    $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+	$profile_user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
+    $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$profile_user_id}");
     if(mysqli_num_rows($sql) > 0) {
         $row = mysqli_fetch_assoc($sql);
     }
     $name = $row['fname'] . " " . $row['lname'];
     $email = $row['email'];
     $img = $row['img'];
+	echo "<script>console.log('user=" . $_SESSION['unique_id'] . ", profile_user_id=" . $profile_user_id . "')</script>";
+	$_SESSION['relationship'] = "";
 
 ?>
 
@@ -26,9 +29,15 @@
   <link rel="stylesheet" href="../stylea.css">
   <link rel="stylesheet" href="profile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <!-- Modal -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Modal -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   
-
 </head>
 <body>
   <div class="wrapper">
@@ -90,15 +99,95 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
-								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="150" height="150">
-                                <!-- <img src="../img/sample.jpg" alt="Admin" class="rounded-circle p-1 bg-primary" width="150"> -->
-                                <!-- <img src="../img/ame.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="150"> -->
+								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="150" height="150">                                
 								<div class="mt-3">
 									<h4><?php echo $name;?></h4>
 									<p class="text-secondary mb-1">Full Stack Developer</p>
 									<p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-									<button class="btn btn-primary">Follow</button>
-									<button class="btn btn-outline-primary">Message</button>
+									<form id="add" method="post">
+										<?php
+											//Add Companion Button
+											$b1 = 'style="display: none"';
+											$b2 = 'style="display: none"';
+											$b3 = 'style="display: inline-block"';
+											$b4 = 'style="display: none"';
+											$b5 = 'style="display: none"';
+
+											//Check if user has any companions
+											$sql2 = mysqli_query($conn, "SELECT * FROM companion WHERE user = {$_SESSION['unique_id']}");
+											if(mysqli_num_rows($sql2) > 0) {
+												//Check if user is alerady a companion
+												$sql3 = mysqli_query($conn, "SELECT * FROM companion WHERE user = {$_SESSION['unique_id']} AND user_companion = {$profile_user_id}");
+												if(mysqli_num_rows($sql3) > 0) {
+													echo "<script>console.log('has companions, users are companions');</script>";
+													//Users are companions
+													$b1 = 'style="display: inline-block"'; 
+													$b2 = 'style="display: inline-block"'; 
+													$b3 = 'style="display: none"'; 
+													$b4 = 'style="display: none"';
+													$b5 = 'style="display: none"';
+												} 
+												//Check if user is requesting to be a companion
+												$sql4 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_one = {$_SESSION['unique_id']} AND user_two = {$profile_user_id}");
+												if(mysqli_num_rows($sql4) > 0) {
+													//Requesting to be companions (Cancel Request)
+													echo "<script>console.log('has companions, requesting to be a companion (Cancel Request)');</script>";
+													$b1 = 'style="display: none"'; 
+													$b2 = 'style="display: none"';
+													$b3 = 'style="display: none"'; 
+													$b4 = 'style="display: inline-block"'; 
+													$b5 = 'style="display: none"';
+												}											
+												//Check if user is being requested to be a companion
+												$sql5 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_one = {$profile_user_id} AND user_two = {$_SESSION['unique_id']}");
+												if(mysqli_num_rows($sql5) > 0) {
+													//Confirm Request
+													echo "<script>console.log('has companions, user is being requested to be a companion (Confirm)');</script>";
+													$b1 = 'style="display: none"'; 
+													$b2 = 'style="display: none"';
+													$b3 = 'style="display: none"'; 
+													$b4 = 'style="display: none"'; 
+													$b5 = 'style="display: inline-block"';
+												}																																				
+																																	
+											} else {
+												//Check if user is requesting to be a companion
+												$sql6 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_one = {$_SESSION['unique_id']} AND user_two = {$profile_user_id}");
+												if(mysqli_num_rows($sql6) > 0) {
+													//Requesting to be companions (Cancel Request)
+													echo "<script>console.log('no companions, requesting to be a companion (Cancel Request)');</script>";
+													$b1 = 'style="display: none"'; 
+													$b2 = 'style="display: none"';
+													$b3 = 'style="display: none"'; 
+													$b4 = 'style="display: inline-block"'; 
+													$b5 = 'style="display: none"';
+												}
+												//Check if user is being requested to be a companion
+												$sql7 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_one = {$profile_user_id} AND user_two = {$_SESSION['unique_id']}");
+												if(mysqli_num_rows($sql7) > 0) {
+													//Confirm Request
+													echo "<script>console.log('no companion, user is being requested to be a companion (Confirm)');</script>";
+													$b1 = 'style="display: none"'; 
+													$b2 = 'style="display: none"';
+													$b3 = 'style="display: none"'; 
+													$b4 = 'style="display: none"'; 
+													$b5 = 'style="display: inline-block"';
+												}
+											}
+										?>
+										<input type="text" name="unique_id" id="unique_id" value="<?php echo $_SESSION['unique_id']?>" hidden>										
+										<input type="text" name="add_user" id="add_user" value="<?php echo $profile_user_id?>" hidden>
+
+										
+									</form>
+									<div class="relationship-buttons">
+										<!--$b1--><a href="../chat/chat.php?user_id=<?php echo $profile_user_id;?>"><button class="btn btn-primary" id="message" <?php echo $b1;?>>Message</button></a>
+										<!--$b2--><button class="btn btn-outline-primary" id="remove-companion" name="remove-companion" data-toggle="modal" data-target="#remove-companion-modal" <?php echo $b2;?>>Un-Companion</button>
+										<!--$b3--><button class="btn btn-primary" id="add-companion" name="add-companion" <?php echo $b3;?>>Add Companion</button>
+										<!--$b4--><button class="btn btn-outline-primary" id="remove-request" data-toggle="modal" data-target="#remove-request-modal" <?php echo $b4;?>>Cancel Request</button>
+										<!--$b5--><button class="btn btn-outline-primary" id="confirm-request" <?php echo $b5;?>>Confirm Request</button>
+									</div>
+									
 								</div>
 							</div>
 							<hr class="my-4">
@@ -211,5 +300,50 @@
 			</div>
 		</div>
 	</div>
+
+
+
+<!-- Remove Request Confirmation Modal -->
+	<div class="modal" tabindex="-1" role="dialog" id="remove-request-modal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Remove Companion Request</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <p>Are you sure you want to cancel your Companion Request to <?php echo $name;?>?</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" id="remove-request-confirm" data-dismiss="modal">Confirm</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<!-- Remove Companion Confirmation Modal -->
+	<div class="modal" tabindex="-1" role="dialog" id="remove-companion-modal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Remove Companion</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <p>Are you sure you want to remove <?php echo $name;?> as your Companion?</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" id="remove-companion-confirm" data-dismiss="modal">Confirm</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>	
 </body>
+<script src="companion-methods.js"></script>
 </html>

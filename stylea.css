@@ -269,3 +269,16 @@ nav .content .links{
   font-size: 45px;
   margin: 5px 0;
 }
+
+form.add{
+  vertical-align: middle;
+  text-align: center;
+}
+
+button.active{
+  display: block;
+}
+
+button.inactive{
+  display: none;
+}

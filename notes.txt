@@ -1,0 +1,32 @@
+1-7-21
+
+overall:
+- database name: accompany
+- minove ko sa dashboard folder ung index tas nirename ko as home.php
+- minove ko sa profile folder ung profile.php
+- ung separate js and php files para sa signup(index) and login nilagay ko sa index folder
+- di ko na nilagyan ng header file, naka lagay na sa mismong index.php at login.php ung <head></head>
+
+chatapp:
+- nilagyan ko ng back to home button, class name: home
+
+home:
+- ox na home, profile saka chat btn
+
+profile:
+- nakalink na sa db ung full name, img saka email
+- idadagdag ko pa ba ung phone, mobile saka address sa db?
+
+-----------------------------------------------------------
+1-14-21
+
+- ung mga users na nakadisplay sa dashboard/home.php sa search dapat yon pero dinidisplay ko muna 
+para madaling pindutin saka di ko pa nagagawa ung sa search hahahaha
+- ox na friend requests, pero pag nag request/confirm/cancel ng request need muna irefresh ung page para magupdate
+dun sa tao na pinagrequestan. 
+Example: si John nag request kay Benjamin. Kay John naka ajax naman ung buttons so matic magbabago pero kay 
+Benjamin need pa muna irefresh at di ko pa naaajax ung buong page para magupdate every n intervals.
+- Note: baka makalimutan ko hahahah pag nagremove ng companion dat idedelete lahat ng messages.
+- ang ididisplay nalang sa chat is ung mga companions
+- cinomment out ko muna ung "Can't find Companion" sa search at nag bubug nag pprint parin kahit may match hahaha
+
