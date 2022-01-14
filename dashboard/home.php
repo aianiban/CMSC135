@@ -89,12 +89,6 @@
       float: right;
     }
 
-    .requests-btn{
-      color: white;
-      background-color: transparent;
-      border: none;
-    }
-
     .companion-request .img-name p,
     .companion-request .confirm-decline i{
       display: inline-block;
@@ -162,10 +156,9 @@
                 $request_count = mysqli_num_rows($sql3);
               }
             ?>
-            
-            <button class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</button>
+            <a href="#" class="desktop-link" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a>
             <input type="checkbox" id="show-features">
-            <label for="show-features">Profile</label>
+            <label for="show-services" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</label>
           </li>
         </ul>
       </div>
