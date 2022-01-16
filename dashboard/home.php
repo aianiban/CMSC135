@@ -15,14 +15,12 @@
     $items = "";
     while($row2 = mysqli_fetch_assoc($sql2)) {
       $items .= '
-        <a href="../profile/users-profile.php?user_id=' . $row2['unique_id'] .'">
           <div class="user-item">
-            <img src="../img/'. $row2['img'].'" alt="Admin" width="250" height="250">
-            <p>' . $row2['fname'] . ' ' . $row2['lname'] . '</p>
-						<button type="button" class="btn btn-outline-light">Message</button>
-            <button type="button" class="btn btn-outline-light">Add Companion</button>
-          </div>
-        </a>';
+            <img src="../img/'. $row2['img'].'" alt="Admin" class="rounded" width="250" height="250">
+            <div class="name"><p>' . $row2['fname'] . ' ' . $row2['lname'] . '</p></div>
+						<button type="button" class="btn btn-outline-light">View Profile</button>
+            <button type="button" class="btn btn-outline-light">Message</button>
+          </div>';
     }
               $request_count = 0;
               $sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
@@ -97,19 +95,20 @@
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
       </form>
     </nav>
-  
   </div>
-    
-  <<div class="dummy-text">
-    <h2>Welcome to Accompany <?php echo $row['fname'];?>!</h2>
-    <h4>Find a companion now</h4>
-    <div class="card">
-    <p>Accompany is a social media platform for BS Computer Science students and alumni of University of the Philippines Baguio. It is an online community whose main goal is to help struggling students in their computer science courses through connecting them to people who can give a helping hand. Users can find, add, and converse with other people whether you’re a freshman looking for a quick peer to peer tutorial, or a senior who wants to provide a more relatable perspective on computer science concepts. In this platform, users are called “companions”. Find your companion today!</p>
-    </div>
-    <div class="userlist">
-      <?php echo $items;?>
-      
-    </div>
+
+  <div class="body-content">
+    <div class="welcome">Welcome to Accompany <?php echo $row['fname'];?>!</div>  
+      <div class="about"><p>Accompany is a social media platform for BS Computer Science students and alumni of University of the Philippines Baguio. 
+        It is an online community whose main goal is to help struggling students in their computer science courses through connecting them to people who can give a helping hand. 
+        Users can find, add, and converse with other people whether you're a freshman looking for a quick peer to peer tutorial, or a senior who wants to provide a more relatable perspective on computer science concepts. 
+        In this platform, users are called “companions”. Find your companion today!</p>
+    </div>   
+
+        <div class="userlist">
+          <div class="header-text">Find a companion now!</div>
+          <?php echo $items;?>
+        </div>
   </div>
 </body>
 </html>

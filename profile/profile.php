@@ -13,6 +13,8 @@
     $name = $row['fname'] . " " . $row['lname'];
     $email = $row['email'];
     $img = $row['img'];
+	$bio = $row['bio'];
+	$position = $row['position'];
 
 	$request_count = 0;
 	$sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
@@ -95,11 +97,11 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
-								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded-circle p-1 bg-success" width="150" height="150">
+								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded" width="200" height="200">
 								<div class="mt-3">
 									<h4><?php echo $name;?></h4>
-									<p class="text-secondary mb-1">Full Stack Developer</p>
-									<p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+									<p class="text-secondary mb-1"><?php echo $position;?></p>
+									<p class="text-muted font-size-sm"><?php echo $bio;?></p>
 									<button class="btn btn-success">Follow</button>
 									<button class="btn btn-outline-success">Message</button>
 								</div>
@@ -151,15 +153,7 @@
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="(239) 816-9029">
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Mobile</h6>
+									<h6 class="mb-0">Contact</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control" value="(320) 380-4539">

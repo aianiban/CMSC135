@@ -11,74 +11,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- Modal -->
-  <style>
-    .userlist {
-      position: relative;
-      top: 10px;
-      width: 100%;
-      height: 50px;
-      /* justify-content: center; */
-    }
-
-    .badge {
-      position: relative;
-      top: -10px;
-      right: 20px;
-      padding: 5px 5px;
-      border-radius: 50%;
-      background-color: red;
-      color: white;
-
-    }
-
-    .user-item{
-      background: linear-gradient(90deg, rgba(35,182,118,1) 0%, rgba(32,178,170,1) 100%);
-      width: 90%;
-      padding: 50px 50px;
-      color: white;
-      border-radius: 10px;
-      border: none;
-      margin: 50px 50px;
-    }
-
-    .companion-request{
-      overflow: auto;
-      /* width: ; */
-    }
-
-    .request-img{
-      display: inline;
-      width: 50px;
-      height: 50px;
-      right: 0%;
-      border-radius: 50%;
-    }
-
-    .img-name{
-      float: left;
-    }
-
-    .confirm-decline{
-      float: right;
-    }
-
-    .companion-request .img-name p,
-    .companion-request .confirm-decline i{
-      display: inline-block;
-    }
-
-    .modal-body ul{
-      list-style-type: none;
-    }
-
-    .compaion-request .confirm-decline i{
-      width: 50px;
-      height: 50px;
-    }
-
-  </style>
-
+  <link rel="stylesheet" href="../stylea.css">
 </head>
 <body>
 

@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   text-decoration: none !important;
   font-family: 'Poppins', sans-serif;
@@ -256,15 +254,67 @@ nav .content .links{
     padding-right: 30px;
   }
 }
-.dummy-text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  padding: 0 20px;
-  text-align: center;
-  transform: translate(-50%, -50%);
+
+.body-content{
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+.welcome {
+  padding: 10px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+  color: rgb(42, 131, 126);
+}
+
+.welcome, .header-text{
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 45px;
+  font-weight: 500;
+  color: rgb(42, 131, 126);
+}
+
+.about{
+  font-size: 20px;
+  padding: 50px;
+  margin: 50px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, rgba(35,182,118,1) 0%, rgba(32,178,170,1) 100%);
+  color: #fff;
+}
+
+.userlist {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.user-item{
+  min-width: 500px;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  background: linear-gradient(90deg, rgba(35,182,118,1) 0%, rgba(32,178,170,1) 100%);
+  color: #fff;
+  padding: 50px;
+  border-radius: 10px;
+  border: none;
+}
+
+.user-item .name {
+  font-size: 20px;
+  padding-top: 12px;
+  color: #fff;
+}
+
+.about:hover, .user-item:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+} 
 
 form.add{
   vertical-align: middle;
@@ -277,4 +327,50 @@ button.active{
 
 button.inactive{
   display: none;
+}
+.badge {
+  position: relative;
+  top: -10px;
+  right: 20px;
+  padding: 5px 5px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+
+}
+
+/* Requests Modal CSS */
+.companion-request{
+  overflow: auto;
+  /* width: ; */
+}
+
+.request-img{
+  display: inline;
+  width: 50px;
+  height: 50px;
+  right: 0%;
+  border-radius: 50%;
+}
+
+.img-name{
+  float: left;
+}
+
+.confirm-decline{
+  float: right;
+}
+
+.companion-request .img-name p,
+.companion-request .confirm-decline i{
+  display: inline-block;
+}
+
+.modal-body ul{
+  list-style-type: none;
+}
+
+.compaion-request .confirm-decline i{
+  width: 50px;
+  height: 50px;
 }
