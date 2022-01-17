@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <title></title>
 
-  <link rel="stylesheet" href="formstyle/thread-style.css">
+  <link rel="stylesheet" href="forumstyle/thread-style.css">
 <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
