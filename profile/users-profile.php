@@ -17,6 +17,11 @@
 	echo "<script>console.log('user=" . $_SESSION['unique_id'] . ", profile_user_id=" . $profile_user_id . "')</script>";
 	$_SESSION['relationship'] = "";
 
+	$request_count = 0;
+	$sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
+	if(mysqli_num_rows($sql3) > 0) {
+	  $request_count = mysqli_num_rows($sql3);
+	}
 ?>
 
 <!DOCTYPE html>
@@ -41,23 +46,23 @@
 </head>
 <body>
   <div class="wrapper">
-    <nav>
+  <nav>
       <input type="checkbox" id="show-search">
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
       <div class="content">
       <div class="logo"><a href="#">Accompany</a></div>
-        <ul class="links">
+	  <ul class="links">
           <li><a href="../dashboard/home.php">Home</a></li>
           <li>
-            <a href="profile.php" class="desktop-link">Profile</a>
+            <a href="../profile/profile.php" class="desktop-link">Profile</a>
             <input type="checkbox" id="show-features">
             <label for="show-features">Profile</label>
             <ul class="dropdown">
-              <li><a href="#">Drop Menu 1</a></li>
-              <li><a href="#">Drop Menu 2</a></li>
-              <li><a href="#">Drop Menu 3</a></li>
-              <li><a href="#">Drop Menu 4</a></li>
+              <li><a href="../profile/profile.php">Go to profile</a></li>
+              <li><a href="#">Companion List</a></li>
+              <li><a href="#" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a></li>
+              <li><a href="../chat/php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a></li>
             </ul>
           </li>
           <li><a href="../chat/users.php">Chat</a></li>
@@ -78,14 +83,14 @@
                   <li><a href="#">Sub Menu 2</a></li>
                   <li><a href="#">Sub Menu 3</a></li>
                 </ul>
-              </li>
+              </li>              
             </ul>
           </li>
         </ul>
       </div>
       <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
       <form action="#" class="search-box">
-        <input type="text" placeholder="Type Something to Search..." required>
+        <input type="text" placeholder="Type Something to Search..." id="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
       </form>
     </nav>
@@ -99,7 +104,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
-								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded-circle p-1 bg-primary" width="150" height="150">                                
+								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded-circle p-1 bg-success" width="150" height="150">                                
 								<div class="mt-3">
 									<h4><?php echo $name;?></h4>
 									<p class="text-secondary mb-1">Full Stack Developer</p>
@@ -181,11 +186,11 @@
 										
 									</form>
 									<div class="relationship-buttons">
-										<!--$b1--><a href="../chat/chat.php?user_id=<?php echo $profile_user_id;?>"><button class="btn btn-primary" id="message" <?php echo $b1;?>>Message</button></a>
-										<!--$b2--><button class="btn btn-outline-primary" id="remove-companion" name="remove-companion" data-toggle="modal" data-target="#remove-companion-modal" <?php echo $b2;?>>Un-Companion</button>
-										<!--$b3--><button class="btn btn-primary" id="add-companion" name="add-companion" <?php echo $b3;?>>Add Companion</button>
-										<!--$b4--><button class="btn btn-outline-primary" id="remove-request" data-toggle="modal" data-target="#remove-request-modal" <?php echo $b4;?>>Cancel Request</button>
-										<!--$b5--><button class="btn btn-outline-primary" id="confirm-request" <?php echo $b5;?>>Confirm Request</button>
+										<!--$b1--><a href="../chat/chat.php?user_id=<?php echo $profile_user_id;?>"><button class="btn btn-success" id="message" <?php echo $b1;?>>Message</button></a>
+										<!--$b2--><button class="btn btn-outline-success" id="remove-companion" name="remove-companion" data-toggle="modal" data-target="#remove-companion-modal" <?php echo $b2;?>>Un-Companion</button>
+										<!--$b3--><button class="btn btn-success" id="add-companion" name="add-companion" <?php echo $b3;?>>Add Companion</button>
+										<!--$b4--><button class="btn btn-outline-success" id="remove-request" data-toggle="modal" data-target="#remove-request-modal" <?php echo $b4;?>>Cancel Request</button>
+										<!--$b5--><button class="btn btn-outline-success" id="confirm-request" <?php echo $b5;?>>Confirm Request</button>
 									</div>
 									
 								</div>
@@ -201,15 +206,15 @@
 									<span class="text-secondary">bootdey</span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter me-2 icon-inline text-info"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
+									<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter me-2 icon-inline text-success"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
 									<span class="text-secondary">@bootdey</span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram me-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
+									<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram me-2 icon-inline text-success"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
 									<span class="text-secondary">bootdey</span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook me-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
+									<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook me-2 icon-inline text-success"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
 									<span class="text-secondary">bootdey</span>
 								</li>
 							</ul>
@@ -262,7 +267,7 @@
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="Save Changes">
+									<input type="button" class="btn btn-success px-4" value="Save Changes">
 								</div>
 							</div>
 						</div>
@@ -274,11 +279,11 @@
 									<h5 class="d-flex align-items-center mb-3">Project Status</h5>
 									<p>Web Design</p>
 									<div class="progress mb-3" style="height: 5px">
-										<div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+										<div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 									<p>Website Markup</p>
 									<div class="progress mb-3" style="height: 5px">
-										<div class="progress-bar bg-danger" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+										<div class="progress-bar bg-success" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 									<p>One Page</p>
 									<div class="progress mb-3" style="height: 5px">
@@ -286,11 +291,11 @@
 									</div>
 									<p>Mobile Template</p>
 									<div class="progress mb-3" style="height: 5px">
-										<div class="progress-bar bg-warning" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+										<div class="progress-bar bg-success" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 									<p>Backend API</p>
 									<div class="progress" style="height: 5px">
-										<div class="progress-bar bg-info" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+										<div class="progress-bar bg-success" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
 							</div>
@@ -317,7 +322,7 @@
 	        <p>Are you sure you want to cancel your Companion Request to <?php echo $name;?>?</p>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary" id="remove-request-confirm" data-dismiss="modal">Confirm</button>
+	        <button type="button" class="btn btn-success" id="remove-request-confirm" data-dismiss="modal">Confirm</button>
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>
@@ -338,7 +343,7 @@
 	        <p>Are you sure you want to remove <?php echo $name;?> as your Companion?</p>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary" id="remove-companion-confirm" data-dismiss="modal">Confirm</button>
+	        <button type="button" class="btn btn-success" id="remove-companion-confirm" data-dismiss="modal">Confirm</button>
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	      </div>
 	    </div>

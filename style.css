@@ -315,7 +315,8 @@ body{
   max-width: calc(100% - 130px);
 }
 .outgoing .details p{
-  background: #333;
+  background: rgb(35,182,118) !important;
+  background: linear-gradient(90deg, rgba(35,182,118,1) 0%, rgba(32,178,170,1) 50%, rgba(35,182,118,1) 100%) !important;
   color: #fff;
   border-radius: 18px 18px 0 18px;
 }

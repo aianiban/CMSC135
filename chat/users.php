@@ -13,7 +13,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" context="width-device-width", initial-scale=1.0>
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Sample Chat</title>
+	<title>Accompany</title>
 	<link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 </head>
@@ -33,15 +33,9 @@
 					<img src="../img/<?php echo $row['img'];?>" alt="">
 					<div class="details">
 						<span><?php echo $row['fname'] . " " . $row['lname'];?></span>
-						<p><?php echo $row['status'];?></p>
-						<a href="php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a>	
+						<p><?php echo $row['status'];?></p>	
 					</div>
 				</div>
-				<!-- <div>
-					<a href="../profile/profile.php" class="profile">Back to Profile</a>
-					<div style = "padding:2px;"></div>
-					<a href="php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="profile">Logout</a>
-				</div> -->
 				<a href="../dashboard/home.php" class="home">Home</a>
 			</header>
 			<div class="search">

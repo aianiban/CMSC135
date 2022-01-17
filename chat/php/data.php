@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
     while($row_user = mysqli_fetch_assoc($select_user)) {
         $select_user_companions = mysqli_query($conn, "SELECT unique_id, fname, lname, img, status FROM users WHERE unique_id = {$row_user['user_companion']}");
         $row_companions = mysqli_fetch_assoc($select_user_companions);
