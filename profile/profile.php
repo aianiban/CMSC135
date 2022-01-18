@@ -101,8 +101,8 @@
 								<div class="mt-3">
 									<h4><?php echo $name;?></h4>
 									<p class="text-secondary mb-1"><?php echo $position;?></p>
-									<p class="text-muted font-size-sm"><?php echo $bio;?></p>
-									<button class="btn btn-success">Follow</button>
+									<p class="text-muted font-size-sm"><em><?php echo $bio;?></em></p>
+									<button class="btn btn-success">Change Photo</button>
 									<button class="btn btn-outline-success">Message</button>
 								</div>
 							</div>
@@ -148,7 +148,7 @@
 									<h6 class="mb-0">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="<?php echo $email;?>">
+									<input type="text" class="form-control" id="email" value="<?php echo $email;?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -156,7 +156,7 @@
 									<h6 class="mb-0">Contact</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="(320) 380-4539">
+									<input type="text" class="form-control" id="contact" value="<?php echo $contact;?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -164,13 +164,13 @@
 									<h6 class="mb-0">Address</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="Bay Area, San Francisco, CA">
+									<input type="text" class="form-control" id="address" value="<?php echo $address;?>">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-success px-4" value="Save Changes">
+									<input type="button" class="btn btn-success px-4" id="edit_data" value="Edit Profile">
 								</div>
 							</div>
 						</div>
