@@ -93,7 +93,7 @@
             <label for="show-features">Profile</label>
             <ul class="dropdown">
               <li><a href="../profile/profile.php">Go to profile</a></li>
-              <li><a href="#">Companion List</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#companion-modal">Companion List</a></li>
               <li><a href="#" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a></li>
               <li><a href="../chat/php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a></li>
             </ul>
