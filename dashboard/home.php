@@ -49,6 +49,7 @@
       /* background: gray; */
       display: flex;
       margin-left: 5%;
+      margin-bottom: 15px;
     }
 
     .search{
