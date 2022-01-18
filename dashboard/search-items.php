@@ -9,7 +9,7 @@
         if(mysqli_num_rows($sql_users) > 0) {
             $output .= '<div class="people"><p>People</p>';
             while($row = mysqli_fetch_assoc($sql_users)) {
-                $output .= '<div class="search-item"><img src="../img/' . $row['img'] . '" width="50px" height="50px"><p><b>' . $row['fname'] . " " . $row['lname'] . '</b></p></div>';
+                $output .= '<div class="search-item"><a href="../profile/users-profile.php?user_id=' . $row['unique_id'] . '"><img src="../img/' . $row['img'] . '" width="50px" height="50px"><p><b>' . $row['fname'] . " " . $row['lname'] . '</b></p></a></div>';
             }
             $output .= '</div>';
         }
@@ -19,7 +19,7 @@
             while($row2 = mysqli_fetch_assoc($sql_forum)) {
                 $date_posted = explode(" ", $row2['date_posted']);
                 $date_update = explode(" ", $row2['date_update']);
-                $output .= '<div class="search-item"><p><b>' . $row2['title'] . '</b><p class="forum-details">Posted on: ' . $date_posted[0] . '  |  Last Updated: ' . $date_posted[0]. '</p></p></div>';
+                $output .= '<div class="search-item"><a href="../forum/thread.php?post_id=' . $row2['post_id'] . '"><p><b>' . $row2['title'] . '</b><p class="forum-details">Posted on: ' . $date_posted[0] . '  |  Last Updated: ' . $date_posted[0]. '</p></p></div>';
             }
             $output .= '</div>';
         }
