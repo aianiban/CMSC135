@@ -1,15 +1,21 @@
 <?php
 	include '../config.php';
 	$id=$_POST['id'];
-	$name=$_POST['name'];
+	$fname=$_POST['fname'];
+	$lname=$_POST['lname'];
 	$email=$_POST['email'];
 	$phone=$_POST['phone'];
 	$city=$_POST['city'];
-	$sql = "UPDATE `crud` 
-	SET `name`='$name',
+	$position=$_POST['position'];
+	$bio=$_POST['bio'];
+	$sql = "UPDATE `users` 
+	SET `fname`='$fname', 
+	`lname`='$lname',
 	`email`='$email',
 	`phone`='$phone',
-	`city`='$city' WHERE id=$id";
+	`city`='$city',
+	`position`='$position',
+	`bio`='$bio' WHERE unique_id=$id";
 	if (mysqli_query($conn, $sql)) {
 		echo json_encode(array("statusCode"=>200));
 	} 
