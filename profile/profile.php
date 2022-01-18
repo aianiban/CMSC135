@@ -289,7 +289,7 @@
 								<input type="text" name="bio_modal" id="bio_modal" class="form-control-sm" required>
 							</div>	
 						</div>
-						<input type="hidden" name="id_modal" id="id_modal" class="form-control-sm" value="550136309">
+						<input type="hidden" name="id_modal" id="id_modal" class="form-control-sm" value="<?php echo $unique_id;?>">
 					
 			</div>
 			<div class="modal-footer">
@@ -302,19 +302,28 @@
 			
 <script>
 $(document).ready(function() {
-/*	$.ajax({
-		url: "../buttons/view.php",
-		type: "POST",
-		cache: false,
-		success: function(dataResult){
-			alert("Successful!");
-			$('#table').html(dataResult);
-		}
-	});*/
-	/*$(function () {
-		$('#update_profile').on('show.bs.modal', function (event) {
+	$(function () {
+		/*$('#update_profile').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget);
-			alert("Successful!"); */ /*Button that triggered the modal*/ /*
+			console.log("It works!");
+			//console.log(data);*/
+			//alert("Successful!");  //Button that triggered the modal
+			$.ajax({
+				url: "../buttons/view.php",
+				type: "POST",
+				cache: false,
+				success: function(dataResult){
+					var data = JSON.parse(dataResult);
+					$('#fname_modal').val(data.fname);
+					$('#lname_modal').val(data.lname);
+					$('#email_modal').val(data.email);
+					$('#phone_modal').val(data.phone);
+					$('#city_modal').val(data.city);
+					$('#position_modal').val(data.position);
+					$('#bio_modal').val(data.bio);
+				}
+			});
+			/*		
 			var fname = button.data('fname');
 			var lname = button.data('lname');
 			var email = button.data('email');
@@ -329,9 +338,9 @@ $(document).ready(function() {
 			modal.find('#phone_modal').val(phone);
 			modal.find('#city_modal').val(city);
 			modal.find('#position_modal').val(position);
-			modal.find('#bio_modal').val(bio);
-		});
-    });*/
+			modal.find('#bio_modal').val(bio);*/
+		//});
+    }); 
 	$(document).on("click", "#update_data", function() { 
 		$.ajax({
 			url: "../buttons/edit.php",
