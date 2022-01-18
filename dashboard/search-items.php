@@ -9,7 +9,7 @@
         if(mysqli_num_rows($sql_users) > 0) {
             $output .= '<div class="people"><p>People</p>';
             while($row = mysqli_fetch_assoc($sql_users)) {
-                $output .= '<div class="search-item"><a href="../profile/users-profile.php?user_id=' . $row['unique_id'] . '"><img src="../img/' . $row['img'] . '" width="50px" height="50px"><p><b>' . $row['fname'] . " " . $row['lname'] . '</b></p></a></div>';
+                $output .= '<a href="../profile/users-profile.php?user_id=' . $row['unique_id'] . '"><div class="search-item"><img src="../img/' . $row['img'] . '" width="50px" height="50px"><p><b>' . $row['fname'] . " " . $row['lname'] . '</b></p></div></a>';
             }
             $output .= '</div>';
         }
