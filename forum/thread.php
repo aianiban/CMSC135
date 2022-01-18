@@ -30,9 +30,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- Modal -->
-  
+  <!-- Modal -->  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="../index/search.js"></script>
 </head>
 <style>
   .thread-container{
@@ -105,53 +105,54 @@
         </ul>
       </div>
       <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-      <form action="#" class="search-box">
-        <input type="text" placeholder="Type Something to Search..." id="search-bar" required>
+      <form action="#" class="search-box" name="search-form">
+        <input type="text" placeholder="Type Something to Search..." id="search-bar" name="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <div class="search" id="search"></div>              
       </form>
-      <!-- <div class="search-list" style="display:none">
-        <div class="home-search-item">
-          <p>hello</p>
-        </div>
-      </div> -->
     </nav>
   
   </div>
 
 
 <!---------------------Thread---------------------------->
-
+<input type="text" id="num-comments" name="num-comments" value="5" hidden>
 <div class="thread-container">
-<div class="panel panel-default">
-  <div class="panel-body">
-    <!-- <a href="../forum/forum-home.php"><h3>Accompany forum</h3></a> -->
-    <h4>Title: <?php echo $row['title'];?></h4>
-    <p>Body: <?php echo $row['body']?></p>
-    <hr>
-    <form name="frm" method="post">
-      <input type="hidden" id="commentid" name="Pcommentid" value="0">
+  <div class="panel panel-d`efault">
+    <div class="panel-body">
+      <!-- <a href="../forum/forum-home.php"><h3>Accompany forum</h3></a> -->
+      <h4>Title: <?php echo $row['title'];?></h4>
+      <p>Body: <?php echo $row['body']?></p>
+      <hr>
+      <form name="frm" method="post">
+        <input type="hidden" id="commentid" name="Pcommentid" value="0">
 
-      <div class="form-group">
-        <label for="comment">Write your question:</label>
-        <textarea class="form-control" rows="5" name="msg" required></textarea>
-      </div>
-      <input type="button" id="butsave" name="butsave" class="btn btn-primary" value="Send">
-    </form>
+        <div class="form-group">
+          <label for="comment">Write your question:</label>
+          <textarea class="form-control" rows="5" name="msg" required></textarea>
+        </div>
+        <input type="button" id="butsave" name="butsave" class="btn btn-primary" value="Send">
+      </form>
+    </div>
   </div>
-</div>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h4>Recent questions</h4>           
-	<table class="table" id="MyTable" style="background-color: #edfafa; border:0px;border-radius:10px">
-	  <tbody id="record">
-		
-	  </tbody>
-	</table>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h4>Recent questions</h4>           
+      <table class="table" id="MyTable" style="background-color: #edfafa; border:0px;border-radius:10px">
+        <tbody id="record">
+        
+        </tbody>
+      </table>
+    </div>
   </div>
+  <div id="forum-btns" name="forum-btns">
+    <!-- <input type="button" class="btn btn-outline-success" id="view-more" value="View More Comments">
+    <input type="button" class="btn btn-outline-success" id="view-entire" value="View Entire Discussion"> -->
+  </div>
+  
 </div>
 
-</div>
 
 
 <!-- Reply Comment Modal -->

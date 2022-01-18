@@ -2,7 +2,7 @@
 session_start();
 include_once "../../config.php";
 
-$post_id = 17;
+$post_id = $_GET['post_id'];
 $output = "";
     $sql = mysqli_query($conn, "SELECT * FROM forum_comments WHERE post_id = '$post_id'");
     if(mysqli_num_rows($sql) == 0){

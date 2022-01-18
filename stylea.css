@@ -391,3 +391,33 @@ button.inactive{
     font-size: 20px;
   }
 }
+
+.search-item{
+  width: 95%;
+  /* background: gray; */
+  display: flex;
+  margin-left: 5%;
+  margin-bottom: 15px;
+}
+
+.search{
+  background: #c2ffd2;
+  color: black;
+  border: 1px solid black;
+}
+.search-item p{
+  margin-left: 10px;
+}
+
+.people{
+  border: 1px solid black;
+}
+
+.forum-search{
+  border: 1px solid black;
+}
+
+.forum-search .forum-details{
+  font-size: 15px;
+  font-style: italic;      
+}

@@ -28,9 +28,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- Modal -->
-  
+  <!-- Modal -->  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="../index/search.js"></script>
   <style>
     .userlist {
       position: relative;
@@ -162,17 +162,12 @@
         </ul>
       </div>
       <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-      <form action="#" class="search-box">
-        <input type="text" placeholder="Type Something to Search..." id="search-bar" required>
+      <form action="#" class="search-box" name="search-form">
+        <input type="text" placeholder="Type Something to Search..." id="search-bar" name="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <div class="search" id="search"></div>              
       </form>
-      <!-- <div class="search-list" style="display:none">
-        <div class="home-search-item">
-          <p>hello</p>
-        </div>
-      </div> -->
-    </nav>
-  
+    </nav>  
   </div>
   
 

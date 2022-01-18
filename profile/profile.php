@@ -33,9 +33,9 @@
   <link rel="stylesheet" href="../stylea.css">
   <link rel="stylesheet" href="profile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  
-
+  <script src="../index/search.js"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -82,9 +82,10 @@
         </ul>
       </div>
       <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-      <form action="#" class="search-box">
-        <input type="text" placeholder="Type Something to Search..." id="search-bar" required>
+      <form action="#" class="search-box" name="search-form">
+        <input type="text" placeholder="Type Something to Search..." id="search-bar" name="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <div class="search" id="search"></div>              
       </form>
     </nav>
   </div>
