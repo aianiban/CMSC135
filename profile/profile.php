@@ -12,9 +12,12 @@
     }
     $name = $row['fname'] . " " . $row['lname'];
     $email = $row['email'];
+	$phone = $row['phone'];
+	$city = $row['city'];
     $img = $row['img'];
 	$bio = $row['bio'];
 	$position = $row['position'];
+	$unique_id = $row['unique_id'];
 
 	$request_count = 0;
 	$sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
@@ -22,6 +25,10 @@
 	  $request_count = mysqli_num_rows($sql3);
 	}
 ?>
+<?php
+		include_once "../dashboard/modal.php";
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +42,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -102,8 +113,8 @@
 									<h4><?php echo $name;?></h4>
 									<p class="text-secondary mb-1"><?php echo $position;?></p>
 									<p class="text-muted font-size-sm"><em><?php echo $bio;?></em></p>
-									<button class="btn btn-success">Change Photo</button>
-									<button class="btn btn-outline-success">Message</button>
+									<button class="btn btn-outline-success">Change Photo</button>
+									<button type="button" class="btn btn-outline-success px-4" data-toggle="modal" data-target="#update_profile">Edit Profile</button>
 								</div>
 							</div>
 							<hr class="my-4">
@@ -140,7 +151,7 @@
 									<h6 class="mb-0">Full Name</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="<?php echo $name;?>">
+									<input type="text" class="form-control" value="<?php echo $name;?>"   >
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -148,7 +159,7 @@
 									<h6 class="mb-0">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" id="email" value="<?php echo $email;?>">
+									<input type="text" class="form-control" id="email" value="<?php echo $email;?>"   >
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -156,7 +167,7 @@
 									<h6 class="mb-0">Contact</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" id="contact" value="<?php echo $contact;?>">
+									<input type="text" class="form-control" id="contact" value="<?php echo $phone;?>"   >
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -164,13 +175,7 @@
 									<h6 class="mb-0">Address</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" id="address" value="<?php echo $address;?>">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-9 text-secondary">
-									<button type="button" class="btn btn-success px-4 update" data-toggle="modal" data-target="#update_profile">Edit Profile</button></td>
+									<input type="text" class="form-control" id="address" value="<?php echo $city;?>"   >
 								</div>
 							</div>
 						</div>
@@ -209,67 +214,95 @@
 		</div>
 	</div>
 
-	<!-- Modal Update-->
-    <div class="modal fade" id="update_profile" role="dialog">
-		<div class="modal-dialog modal-sm">
-		  <div class="modal-content">
-			<div class="modal-header" style="color:#fff;background-color: #e35f14;padding:6px;">
-			  <h5 class="modal-title"><i class="fa fa-edit"></i> Update</h5>
-			 
+<!-- Edit Profile Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="update_profile">
+  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Edit Profile</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
 			</div>
 			<div class="modal-body">
-			
-				<!--1-->
-				<div class="row">
-					<div class="col-md-3">
-					    <label>Name</label>
-					</div>
-					<div class="col-md-9">
-						<input type="text" name="name_modal" id="name_modal" class="form-control-sm" required>
-					</div>	
-				</div>
-			    <!--2-->
-				<div class="row">
-					<div class="col-md-3">
-					    <label>Email</label>
-					</div>
-					<div class="col-md-9">
-						<input type="text" name="email_modal" id="email_modal" class="form-control-sm" required>
-					</div>	
-				</div>
-			    <!--3-->
-				<div class="row">
-					<div class="col-md-3">
-					    <label>Phone</label>
-					</div>
-					<div class="col-md-9">
-						<input type="text" name="phone_modal" id="phone_modal" class="form-control-sm" required>
-					</div>	
-				</div>
-				<!--4-->
-				<div class="row">
-					<div class="col-md-3">
-					    <label>City</label>
-					</div>
-					<div class="col-md-9">
-						<input type="text" name="city_modal" id="city_modal" class="form-control-sm" required>
-					</div>	
-				</div>
-				<input type="hidden" name="id_modal" id="id_modal" class="form-control-sm">
-			</div>
-			<div class="modal-footer" style="padding-bottom:0px !important; text-align:center !important;">
-			<p style="text-align:center;float:center;"><button type="submit" id="update_data" class="btn btn-default btn-sm" style="background-color: #e35f14;color:#fff;">Save</button>
-			<button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="background-color: #e35f14;color:#fff;">Close</button></p>
-			
-		  </div>
-		  </div>
-		</div>
-	</div>
-<!-- Modal End-->
 
-<script>/*
+						<!--1-->
+						<div class="row">
+							<div class="col-md-3">
+								<label>First Name</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="fname_modal" id="fname_modal" class="form-control-sm" required>
+							</div>	
+						</div>
+						<!--1.2-->
+						<div class="row">
+							<div class="col-md-3">
+								<label>Last Name</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="lname_modal" id="lname_modal" class="form-control-sm" required>
+							</div>	
+						</div>
+						<!--2-->
+						<div class="row">
+							<div class="col-md-3">
+								<label>Email</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="email_modal" id="email_modal" class="form-control-sm" required>
+							</div>	
+						</div>
+						<!--3-->
+						<div class="row">
+							<div class="col-md-3">
+								<label>Contact</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="phone_modal" id="phone_modal" class="form-control-sm" required>
+							</div>	
+						</div>
+						<!--4-->
+						<div class="row">
+							<div class="col-md-3">
+								<label>City</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="city_modal" id="city_modal" class="form-control-sm" required>
+							</div>	
+						</div>
+						<!--4-->
+						<div class="row">
+							<div class="col-md-3">
+								<label>Position</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="position_modal" id="position_modal" class="form-control-sm" required>
+							</div>	
+						</div>
+						<!--4-->
+						<div class="row">
+							<div class="col-md-3">
+								<label>Bio</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="bio_modal" id="bio_modal" class="form-control-sm" required>
+							</div>	
+						</div>
+						<input type="hidden" name="id_modal" id="id_modal" class="form-control-sm" value="550136309">
+					
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="update_data" data-dismiss="modal">Confirm</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+    	</div>
+  </div>
+</div>
+			
+<script>
 $(document).ready(function() {
-	$.ajax({
+/*	$.ajax({
 		url: "../buttons/view.php",
 		type: "POST",
 		cache: false,
@@ -277,36 +310,42 @@ $(document).ready(function() {
 			alert("Successful!");
 			$('#table').html(dataResult);
 		}
-	});
-	$(function () {
+	});*/
+	/*$(function () {
 		$('#update_profile').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget);
-			alert("Successful!");
-			/*Button that triggered the modal*/
-			/*var id = button.data('id');
-			var name = button.data('name');
+			alert("Successful!"); */ /*Button that triggered the modal*/ /*
+			var fname = button.data('fname');
+			var lname = button.data('lname');
 			var email = button.data('email');
 			var phone = button.data('phone');
 			var city = button.data('city');
+			var position = button.data('position');
+			var bio = button.data('bio');
 			var modal = $(this);
-			modal.find('#name_modal').val(name);
+			modal.find('#fname_modal').val(fname);
+			modal.find('#lname_modal').val(lname);
 			modal.find('#email_modal').val(email);
 			modal.find('#phone_modal').val(phone);
 			modal.find('#city_modal').val(city);
-			modal.find('#id_modal').val(id);
+			modal.find('#position_modal').val(position);
+			modal.find('#bio_modal').val(bio);
 		});
-    });
+    });*/
 	$(document).on("click", "#update_data", function() { 
 		$.ajax({
-			url: "edit.php",
+			url: "../buttons/edit.php",
 			type: "POST",
 			cache: false,
 			data:{
 				id: $('#id_modal').val(),
-				name: $('#name_modal').val(),
+				fname: $('#fname_modal').val(),
+				lname: $('#lname_modal').val(),
 				email: $('#email_modal').val(),
 				phone: $('#phone_modal').val(),
 				city: $('#city_modal').val(),
+				position: $('#position_modal').val(),
+				bio: $('#bio_modal').val(),
 			},
 			success: function(dataResult){
 				var dataResult = JSON.parse(dataResult);
@@ -318,7 +357,7 @@ $(document).ready(function() {
 			}
 		});
 	}); 
-});*/
+});
 </script>
 
 </body>

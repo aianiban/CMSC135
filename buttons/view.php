@@ -2,7 +2,9 @@
 	include '../config.php';
 	$sql = "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}";
 	$result = $conn->query($sql);
-	if ($result->num_rows > 0) {
+	json_encode($result);
+
+/*	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 ?>	
 		<tr>
@@ -25,6 +27,7 @@
 		echo "<tr >
 		<td colspan='5'>No Result found !</td>
 		</tr>";
-	}
+	}*/
+
 	mysqli_close($conn);
 ?>
