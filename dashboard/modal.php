@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<!-- Modal -->
+<!-- Modal Companion Requests-->
 <div class="modal" tabindex="-1" role="dialog" id="request-modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -65,5 +65,59 @@
     </div>
   </div>
 </div>
+
+
+<!-- Modal Companion List-->
+<div class="modal" tabindex="-1" role="dialog" id="companion-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Companion List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php
+          if(mysqli_num_rows($sql3) > 0) {
+            while($row3 = mysqli_fetch_assoc($sql3)) {
+              $sql4 = mysqli_query($conn, "SELECT * FROM companions");
+              $user_requesting = mysqli_fetch_assoc($sql4);
+              $name = $user_requesting['fname'] . " " . $user_requesting['lname'];
+              $img = $user_requesting['img'];
+              echo '<ul>
+              <li>
+                <div class="companion-request">
+                  <div class="img-name">
+                    <img src="../img/' . $img . '" class="request-img">
+                    <a href="../profile/users-profile.php?user_id=' . $user_requesting['unique_id'] . '"><p>' . $name . '</p></a>
+                  </div>
+                  <div class="confirm-decline">                    
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  
+                  
+                </div>    
+              </li>
+            </ul>';
+            }
+
+
+          } else {
+            echo 'No Companions Yet';
+          }
+        
+
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="remove-request-confirm" data-dismiss="modal">Confirm</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>

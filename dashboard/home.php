@@ -43,7 +43,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="home.js"></script>
-  <script src="../index/search.js"></script>
   <style>
     .search-item{
       width: 95%;
@@ -94,7 +93,7 @@
             <label for="show-features">Profile</label>
             <ul class="dropdown">
               <li><a href="../profile/profile.php">Go to profile</a></li>
-              <li><a href="#">Companion List</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#companion-modal">Companion List</a></li>
               <li><a href="#" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a></li>
               <li><a href="../chat/php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a></li>
             </ul>
@@ -126,7 +125,25 @@
       <form action="#" class="search-box" name="search-form">
         <input type="text" placeholder="Type Something to Search..." id="search-bar" name="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
-        <div class="search" id="search"></div>              
+        <div class="search" id="search">
+          <!-- <div class="people">
+            <p>People</p>
+            <div class="search-item">
+              <img src="../img/sample.jpg" width="50px" height="50px"><p>Agent Dude</p>
+            </div>
+            <div class="search-item">
+              <img src="../img/sample.jpg" width="50px" height="50px"><p>Agent Dude</p>
+            </div>
+          </div>
+          <div class="forum-search">
+            <p>Forum Threads</p>
+            <div class="search-item">
+              <p><b>Sample Thread title</b></p>
+            </div>
+          </div> -->
+        </div>
+        
+        
       </form>
     </nav>
   </div>
