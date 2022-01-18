@@ -18,8 +18,7 @@
           <div class="user-item">
             <img src="../img/'. $row2['img'].'" alt="Admin" class="rounded" width="250" height="250">
             <div class="name"><p>' . $row2['fname'] . ' ' . $row2['lname'] . '</p></div>
-						<button type="button" class="btn btn-outline-light">View Profile</button>
-            <button type="button" class="btn btn-outline-light">Message</button>
+						<button type="button" class="btn btn-outline-light" onclick="location.href = \'../profile/users-profile.php?user_id=' . $row2['unique_id'] . '\'">View Profile</button>
           </div>';
     }
               $request_count = 0;
@@ -40,9 +39,41 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Accompany</title>
   <link rel="stylesheet" href="../stylea.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="../javascript/users.js"></script>
+  <script src="home.js"></script>
+  <style>
+    .search-item{
+      width: 95%;
+      /* background: gray; */
+      display: flex;
+      margin-left: 5%;
+    }
+
+    .search{
+      background: #c2ffd2;
+      color: black;
+      border: 1px solid black;
+    }
+    .search-item p{
+      margin-left: 10px;
+    }
+
+    .people{
+      border: 1px solid black;
+    }
+
+    .forum-search{
+      border: 1px solid black;
+    }
+    
+    .forum-search .forum-details{
+      font-size: 15px;
+      font-style: italic;      
+    }
+
+  </style>
 
  </head>
 <body>
@@ -68,7 +99,7 @@
           </li>
           <li><a href="../chat/users.php">Chat</a></li>
           <li>
-            <a href="#" class="desktop-link">Forum</a>
+            <a href="../forum/forum-home.php" class="desktop-link">Forum</a>
             <input type="checkbox" id="show-services">
             <label for="show-services">Forum</label>
             <ul class="dropdown">
@@ -90,9 +121,28 @@
         </ul>
       </div>
       <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
-      <form action="#" class="search-box">
-        <input type="text" placeholder="Type Something to Search..." id="search-bar" required>
+      <form action="#" class="search-box" name="search-form">
+        <input type="text" placeholder="Type Something to Search..." id="search-bar" name="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <div class="search" id="search">
+          <!-- <div class="people">
+            <p>People</p>
+            <div class="search-item">
+              <img src="../img/sample.jpg" width="50px" height="50px"><p>Agent Dude</p>
+            </div>
+            <div class="search-item">
+              <img src="../img/sample.jpg" width="50px" height="50px"><p>Agent Dude</p>
+            </div>
+          </div>
+          <div class="forum-search">
+            <p>Forum Threads</p>
+            <div class="search-item">
+              <p><b>Sample Thread title</b></p>
+            </div>
+          </div> -->
+        </div>
+        
+        
       </form>
     </nav>
   </div>
@@ -112,8 +162,3 @@
   </div>
 </body>
 </html>
-
-
-
-
-

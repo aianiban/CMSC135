@@ -67,7 +67,7 @@
           </li>
           <li><a href="../chat/users.php">Chat</a></li>
           <li>
-            <a href="#" class="desktop-link">Forum</a>
+            <a href="../forum/forum-home.php" class="desktop-link">Forum</a>
             <input type="checkbox" id="show-services">
             <label for="show-services">Forum</label>
             <ul class="dropdown">

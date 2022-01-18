@@ -1,5 +1,4 @@
 <?php
-    // session_start();
     include_once "../../config.php";    
     $user = $_POST['user'];
     $add_user = $_POST['add_user'];
@@ -10,9 +9,5 @@
     } else {
         echo json_encode(array("statusCode"=>201));
     }
-    $conn = null;
-        
-
-        
-    
+    $conn = null;  
 ?>
