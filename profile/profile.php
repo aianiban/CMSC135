@@ -10,7 +10,8 @@
     if(mysqli_num_rows($sql) > 0) {
         $row = mysqli_fetch_assoc($sql);
     }
-    $name = $row['fname'] . " " . $row['lname'];
+    $fname = $row['fname'];
+	$lname = $row['lname'];
     $email = $row['email'];
 	$phone = $row['phone'];
 	$city = $row['city'];
@@ -51,7 +52,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
   <script src="../index/search.js"></script>
 
 </head>
@@ -117,7 +117,7 @@
 							<div class="d-flex flex-column align-items-center text-center">
 								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded" width="200" height="200">
 								<div class="mt-3">
-									<h4><?php echo $name;?></h4>
+									<h4><?php echo $fname.' '.$lname;?></h4>
 									<p class="text-secondary mb-1"><?php echo $position;?></p>
 									<p class="text-muted font-size-sm"><em><?php echo $bio;?></em></p>
 									<button class="btn btn-outline-success">Change Photo</button>
@@ -158,7 +158,7 @@
 									<h6 class="mb-0">Full Name</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="<?php echo $name;?>"   >
+									<input type="text" class="form-control" value="<?php echo $fname.' '.$lname;?>"   >
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -330,23 +330,6 @@ $(document).ready(function() {
 					$('#bio_modal').val(data.bio);
 				}
 			});
-			/*		
-			var fname = button.data('fname');
-			var lname = button.data('lname');
-			var email = button.data('email');
-			var phone = button.data('phone');
-			var city = button.data('city');
-			var position = button.data('position');
-			var bio = button.data('bio');
-			var modal = $(this);
-			modal.find('#fname_modal').val(fname);
-			modal.find('#lname_modal').val(lname);
-			modal.find('#email_modal').val(email);
-			modal.find('#phone_modal').val(phone);
-			modal.find('#city_modal').val(city);
-			modal.find('#position_modal').val(position);
-			modal.find('#bio_modal').val(bio);*/
-		//});
     }); 
 	$(document).on("click", "#update_data", function() { 
 		$.ajax({

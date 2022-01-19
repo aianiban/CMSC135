@@ -81,8 +81,8 @@
         <?php
           if(mysqli_num_rows($sql3) > 0) {
             while($row3 = mysqli_fetch_assoc($sql3)) {
-              $sql5 = mysqli_query($conn, "SELECT * FROM companions");
-              $user_requesting = mysqli_fetch_assoc($sql5);
+              $sql4 = mysqli_query($conn, "SELECT * FROM users");
+              $user_requesting = mysqli_fetch_assoc($sql4);
               $name = $user_requesting['fname'] . " " . $user_requesting['lname'];
               $img = $user_requesting['img'];
               echo '<ul>
