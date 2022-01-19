@@ -21,14 +21,12 @@
 						<button type="button" class="btn btn-outline-light" onclick="location.href = \'../profile/users-profile.php?user_id=' . $row2['unique_id'] . '\'">View Profile</button>
           </div>';
     }
-              $request_count = 0;
-              $sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
-              if(mysqli_num_rows($sql3) > 0) {
-                $request_count = mysqli_num_rows($sql3);
-              }
-?>
-<?php
-						include_once "../dashboard/modal.php";
+    $request_count = 0;
+    $sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
+    if(mysqli_num_rows($sql3) > 0) {
+      $request_count = mysqli_num_rows($sql3);
+    }
+    include_once "../dashboard/modal.php";
 ?>
 
 <!DOCTYPE html>
@@ -126,25 +124,8 @@
       <form action="#" class="search-box" name="search-form">
         <input type="text" placeholder="Type Something to Search..." id="search-bar" name="search-bar" required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
-        <div class="search" id="search">
-          <!-- <div class="people">
-            <p>People</p>
-            <div class="search-item">
-              <img src="../img/sample.jpg" width="50px" height="50px"><p>Agent Dude</p>
-            </div>
-            <div class="search-item">
-              <img src="../img/sample.jpg" width="50px" height="50px"><p>Agent Dude</p>
-            </div>
-          </div>
-          <div class="forum-search">
-            <p>Forum Threads</p>
-            <div class="search-item">
-              <p><b>Sample Thread title</b></p>
-            </div>
-          </div> -->
-        </div>
-        
-        
+        <div class="search" id="search">          
+        </div>                
       </form>
     </nav>
   </div>
