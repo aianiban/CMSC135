@@ -122,7 +122,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
-								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded-circle p-1 bg-success" width="150" height="150">                                
+								<img src="../img/<?php echo $img;?>" alt="Admin" class="rounded" width="200" height="200">                           
 								<div class="mt-3">
 									<h4><?php echo $fname.' '.$lname;?></h4>
 									<p class="text-secondary mb-1"><?php echo $position;?></p>
