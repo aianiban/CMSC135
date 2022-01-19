@@ -351,7 +351,7 @@ $(document).ready(function() {
 				if(dataResult.statusCode==200){
 					$('#update_profile').modal().hide();
 					alert('Data updated successfully !');
-					location.reload();					
+					location.reload();
 				}
 			}
 		});
