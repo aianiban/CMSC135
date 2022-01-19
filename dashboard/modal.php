@@ -31,14 +31,14 @@
             while($row3 = mysqli_fetch_assoc($sql3)) {
               $sql4 = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$row3['user_one']}");
               $user_requesting = mysqli_fetch_assoc($sql4);
-              $name = $user_requesting['fname'] . " " . $user_requesting['lname'];
-              $img = $user_requesting['img'];
+              $rname = $user_requesting['fname'] . " " . $user_requesting['lname'];
+              $rimg = $user_requesting['img'];
               echo '<ul>
               <li>
                 <div class="companion-request">
                   <div class="img-name">
-                    <img src="../img/' . $img . '" class="request-img">
-                    <a href="../profile/users-profile.php?user_id=' . $user_requesting['unique_id'] . '"><p>' . $name . '</p></a>
+                    <img src="../img/' . $rimg . '" class="request-img">
+                    <a href="../profile/users-profile.php?user_id=' . $user_requesting['unique_id'] . '"><p>' . $rname . '</p></a>
                   </div>
                   <div class="confirm-decline">                    
                     <i class="fas fa-check-circle"></i>
@@ -59,8 +59,8 @@
         ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="remove-request-confirm" data-dismiss="modal">Confirm</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!--<button type="button" class="btn btn-primary" id="remove-request-confirm" data-dismiss="modal">Confirm</button>-->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -79,18 +79,18 @@
       </div>
       <div class="modal-body">
         <?php
-          if(mysqli_num_rows($sql3) > 0) {
-            while($row3 = mysqli_fetch_assoc($sql3)) {
-              $sql4 = mysqli_query($conn, "SELECT * FROM users");
-              $user_requesting = mysqli_fetch_assoc($sql4);
-              $name = $user_requesting['fname'] . " " . $user_requesting['lname'];
-              $img = $user_requesting['img'];
+          $sql5 = mysqli_query($conn, "SELECT * FROM users WHERE NOT unique_id = {$_SESSION['unique_id']}");
+          if(mysqli_num_rows($sql5) > 0) {
+            while($row5 = mysqli_fetch_assoc($sql5)){
+              //$row5= mysqli_fetch_assoc($sql);
+              $cname = $row5['fname'] . " " . $row5['lname'];
+              $cimg = $row5['img'];
               echo '<ul>
               <li>
                 <div class="companion-request">
                   <div class="img-name">
-                    <img src="../img/' . $img . '" class="request-img">
-                    <a href="../profile/users-profile.php?user_id=' . $user_requesting['unique_id'] . '"><p>' . $name . '</p></a>
+                    <img src="../img/' . $cimg . '" class="request-img">
+                    <a href="../profile/users-profile.php?user_id=' . $row5['unique_id'] . '"><p>' . $cname . '</p></a>
                   </div>
                   <div class="confirm-decline">                    
                     <i class="fas fa-check-circle"></i>
@@ -109,7 +109,7 @@
         ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="remove-request-confirm" data-dismiss="modal">Confirm</button>
+        <!--<button type="button" class="btn btn-primary" id="remove-request-confirm" data-dismiss="modal">Confirm</button>-->
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
