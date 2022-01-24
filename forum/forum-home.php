@@ -64,23 +64,6 @@
         <li><a href="../chat/users.php">Chat</a></li>
         <li>
           <a href="../forum/forum-home.php" class="desktop-link">Forum</a>
-          <input type="checkbox" id="show-services">
-          <label for="show-services">Forum</label>
-          <ul class="dropdown">
-            <li><a href="#">Drop Menu 1</a></li>
-            <li><a href="#">Drop Menu 2</a></li>
-            <li><a href="#">Drop Menu 3</a></li>
-            <li>
-              <a href="#" class="desktop-link">More Items</a>
-              <input type="checkbox" id="show-items">
-              <label for="show-items">More Items</label>
-              <ul>
-                <li><a href="#">Sub Menu 1</a></li>
-                <li><a href="#">Sub Menu 2</a></li>
-                <li><a href="#">Sub Menu 3</a></li>
-              </ul>
-            </li>              
-          </ul>
         </li>
       </ul>
     </div>
