@@ -53,3 +53,7 @@ Accompany is a social media platform for BS Computer Science students and alumni
 - Voting system in forum threads and comments/replies
 
 
+## Sample Users:
+- johndoe@gmail.com pw: johndoe123
+- jdc@gmail.com pw: juandelacruz123
+- peterlopez@gmail.com pw: peterlopez123
