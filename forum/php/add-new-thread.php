@@ -3,8 +3,8 @@
     session_start();
 
     $user = $_SESSION['unique_id'];
-    $newThreadTitle = $_POST['newThreadTitle'];
-    $newThreadBody = $_POST['newThreadBody'];
+    $newThreadTitle = addslashes($_POST['newThreadTitle']);
+    $newThreadBody = addslashes($_POST['newThreadBody']);
     $date = date("Y-m-d H:i:s");  
 
     // $user = 12345234;
