@@ -4,7 +4,6 @@
   if(!isset($_SESSION['unique_id'])){
     header("location: ../chat/login.php");
   }
-  
 
   $post_id = mysqli_real_escape_string($conn, $_GET['post_id']);
 
@@ -19,7 +18,7 @@
   if(mysqli_num_rows($sql3) > 0) {
     $request_count = mysqli_num_rows($sql3);
   }
-  // include_once "../dashboard/modal.php";
+ include_once "../dashboard/modal.php";
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +68,7 @@
             <li><a href="../profile/profile.php">Go to profile</a></li>
             <li><a href="#" data-toggle="modal" data-target="#companion-modal">Companion List</a></li>
             <li><a href="#" class="requests-btn" data-toggle="modal" data-target="#request-modal">Requests(<?php echo $request_count;?>)</a></li>
-            <li><a href="../chat/php/logout.php?logout_id=<?php echo $row['unique_id'];?>" class="logout">Logout</a></li>
+            <li><a href="../chat/php/logout.php?logout_id=<?php echo $_SESSION['unique_id'];?>" class="logout">Logout</a></li>
           </ul>
         </li>
         <li><a href="../chat/users.php">Chat</a></li>

@@ -14,11 +14,6 @@
     if(mysqli_num_rows($sql3) > 0) {
       $request_count = mysqli_num_rows($sql3);
     }
-    $request_count = 0;
-    $sql3 = mysqli_query($conn, "SELECT * FROM companion_request WHERE user_two = {$_SESSION['unique_id']}");
-    if(mysqli_num_rows($sql3) > 0) {
-      $request_count = mysqli_num_rows($sql3);
-    }
 		include_once "../dashboard/modal.php";
 ?>
 
