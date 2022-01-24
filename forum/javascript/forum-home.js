@@ -18,7 +18,6 @@ $(document).ready(function() {
                 success: function(dataResult){
                     var dataResult = JSON.parse(dataResult);
                     if(dataResult.statusCode == 200) {
-                        console.log("pumasok naman");
                         document.forms["new-thread-form"]["new-thread-title"].value = "";
                         document.forms["new-thread-form"]["new-thread-body"].value = "";
                     } else {

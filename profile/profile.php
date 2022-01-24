@@ -354,7 +354,7 @@ $(document).ready(function() {
 				}
 			}
 		});
-	}); 
+	});
 });
 </script>
 

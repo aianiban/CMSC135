@@ -17,26 +17,6 @@ $(document).on('click', '#view-entire', function() {
 });
 
 
-
-
-
-// $("#view-more").on('click', function() {
-// 	$('#num-comments').val(+$('#num-comments').val() + 5);
-// 	var shit = $('#num-comments').val();
-// 	console.log("view more: " + shit);
-// 	LoadData();
-	
-// });
-
-
-// $("#view-entire").on('click', function() {
-// 	$('#num-comments').val(0);
-// 	var shit = $('#num-comments').val();
-// 	console.log("entire: " + shit);
-// 	LoadData();
-
-// });
-
 function LoadData(){
 	var numComments = $('#num-comments').val();
 	var forumBtns = document.getElementById("forum-btns");
@@ -49,15 +29,12 @@ function LoadData(){
 		},
 		success: function(data) {
 			$('#MyTable tbody').empty();
-			console.log("index: " + numComments);
-			console.log("total: " + data[0].total_comments);
 			if(numComments < data[0].total_comments && numComments != 0){
 				$("#forum-btns").html('<input type="button" class="btn btn-outline-success" id="view-more" value="View More Comments"><input type="button" class="btn btn-outline-success" id="view-entire" value="View Entire Discussion">');
 			} else {
 				// if(numComments >= data[0].total_comments || numComments == 0){$("#forum-btns").html("");}	
 				if(numComments >= data[0].total_comments || numComments == 0){
 					forumBtns.style.display = "none"; 
-					console.log("potanginaasfijshflsafjad");
 				}
 			}
 			for (var i=1; i<data.length; i++) {

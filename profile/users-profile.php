@@ -25,6 +25,7 @@
 	$ig = $row['fname'];
 	$fb = $row['fname'];
 	$unique_id = $row['unique_id'];
+	$name = $fname . " " . $lname;
 
 	echo "<script>console.log('user=" . $_SESSION['unique_id'] . ", profile_user_id=" . $profile_user_id . "')</script>";
 	$_SESSION['relationship'] = "";
